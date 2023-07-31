@@ -200,6 +200,7 @@ Do not write YML files or alter Lutris database, only print data to be written o
         game = re.sub(r"\..*", "", os.path.basename(file))  # Strip extension
         for token in args.strip_filename:
             game = game.replace(token, "")                  # Strip tokens
+        game = re.sub("\(.*?\)|\[.*?\]","",game)            # Strip any textin () or []
         game = re.sub(r"\s+", " ", game).strip(" ")         # Remove excess whitespace
 
         slug = re.sub(r"[^0-9A-Za-z']", " ", game)          # Split on nonword characters
